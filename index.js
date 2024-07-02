@@ -67,26 +67,24 @@ async function sendMail(data) {
 
 app.post("/send-email", async (req, res) => {
   const { email, subject, text } = req.body;
-  const body = req.body;
-  res.send(body);
-  // if (!email) {
-  //   return res.status(400).send("Email is required");
-  // }
-  // if (!subject) {
-  //   return res.status(400).send("subject is required");
-  // }
-  // if (!text) {
-  //   return res.status(400).send("text is required");
-  // }
+  if (!email) {
+    return res.status(400).send("Email is required");
+  }
+  if (!subject) {
+    return res.status(400).send("subject is required");
+  }
+  if (!text) {
+    return res.status(400).send("text is required");
+  }
 
-  // const data = { email, subject, text };
+  const data = { email, subject, text };
 
-  // try {
-  //   const result = await sendMail(data);
-  //   res.send("Email sent successfully");
-  // } catch (error) {
-  //   res.status(500).send("Error sending email");
-  // }
+  try {
+    const result = await sendMail(data);
+    res.send("Email sent successfully");
+  } catch (error) {
+    res.status(500).send("Error sending email");
+  }
 });
 
 const port = process.env.PORT || 5100;
