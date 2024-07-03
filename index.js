@@ -49,8 +49,8 @@ async function sendMail(data) {
     });
 
     const mailOptions = {
-      from: `SENDER_NAME <${
-        process.env.EMAIL_USER || "kawsaralhasan.360@gmail.com"
+      from: `Commandespros <${
+        process.env.EMAIL_USER || "commandespros@gmail.com"
       }>`,
       to: data?.email,
       subject: data?.subject,
